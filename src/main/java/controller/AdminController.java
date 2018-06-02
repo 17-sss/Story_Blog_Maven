@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -33,7 +34,9 @@ public class AdminController {
 	// 관리자 유저관리
 	// /admin/accountList
 	@RequestMapping("/accountList")
-	public String accountList(String pageNum, Model model, HttpServletRequest req) throws Exception {
+	public ModelAndView accountList(String pageNum, ModelAndView mv, HttpServletRequest req) throws Exception {
+		HttpSession session = req.getSession();
+		
 		int pageSize = 10;
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 		//String pageNum = req.getParameter("pageNum");
@@ -46,6 +49,7 @@ public class AdminController {
 		   currentPage = Integer.parseInt(pageNum);
 		}*/
 		// end. 임시 1페이지
+		
 		int currentPage = Integer.parseInt(pageNum);
 		int startRow = (currentPage - 1) * pageSize + 1;
 		int endRow = currentPage * pageSize;
@@ -69,16 +73,28 @@ public class AdminController {
 			endPage = pageCount;
 		
 		
-		model.addAttribute("count", count);
-		model.addAttribute("usList", usList);
-		model.addAttribute("currentPage", currentPage);
-		model.addAttribute("startPage", startPage);
-		model.addAttribute("bottomLine", bottomLine);
-		model.addAttribute("pageCount", pageCount);
-		model.addAttribute("number", number);
-		model.addAttribute("endPage", endPage);
-
-		return "/admin/accountList";
+		mv.addObject("count", count);
+		mv.addObject("usList", usList);
+		mv.addObject("currentPage", currentPage);
+		mv.addObject("startPage", startPage);
+		mv.addObject("bottomLine", bottomLine);
+		mv.addObject("pageCount", pageCount);
+		mv.addObject("number", number);
+		mv.addObject("endPage", endPage);
+		
+		String sessioncheck = (String)session.getAttribute("sessionID");
+		System.out.println("세션아이디: "+sessioncheck);
+		
+		if(sessioncheck == null) {
+			mv.setViewName("index");
+		} else if (sessioncheck.equals("admin")) {
+			mv.setViewName("admin/accountList");
+		} else if (!sessioncheck.equals("admin")) {
+			mv.setViewName("index");
+		}
+		
+		return mv;
+		
 	}
 	
 	// 관리자 유저수정

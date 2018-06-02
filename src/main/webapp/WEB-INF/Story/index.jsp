@@ -2,7 +2,7 @@
     pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
 <html>
-	<title>Story Blog - MAIN</title>
+	<title>Welcome to Story Blog!</title>
 	<meta charset="EUC-KR">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">

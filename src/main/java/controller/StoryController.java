@@ -676,25 +676,17 @@ public class StoryController {
 	}
 
 	// end. 유저 - 마이페이지 ============================= 
-
-	// 헤더 테스트 ==========================================
-	// header.jspf - /story/head
-	/*@RequestMapping("/head")
-	public ModelAndView head(HttpServletRequest req, ModelAndView mv)  throws Throwable {
-		HttpSession session = req.getSession(); 
-		
-     
-		// 로그인이 안되었을 때
-		if(session.getAttribute("sessionID") == null)  {
-			mv.setViewName(" index");
-		}
-		// 로그인 되었을 때
-		else {
-	    	mv.setViewName("view/user_main");
-		} 
-		  	
+	
+	@RequestMapping(value = "user_search")
+	public ModelAndView user_search(String email, String search) throws Throwable {
+		ModelAndView mv = new ModelAndView();
+		System.out.println("테스트중\n이메일: "+email+"\t검색어: "+search);
+		mv.addObject("search", search);
+		mv.setViewName("view/user_search");
 		return mv;
-	}*/
+	}
+
+	
 
 // {} class
 }

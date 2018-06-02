@@ -18,7 +18,6 @@
 		history.go(-1);
 	</script>
 </c:if>
-<title>Insert title here</title>
 </head>
 <body>
 	

@@ -205,11 +205,8 @@
 	            location.href="${pageContext.request.contextPath}/story/LogoutPro";
 	       	 }
 		 </script>
-		 
-		 
-	
-		 
-	<title>Story Blog - User</title>
+ 
+	<!-- <title>Story Blog - User</title> -->
 </head>
 
 
@@ -239,13 +236,9 @@
 <div class="w3-bar" style="position: fixed;">
 <!-- 상단바 -->
 	<div class="w3-bar w3-black">
-	<!-- 검색 미구현 / 보류 -->
-	<!-- <a href="http://www.google.com" class="w3-bar-item w3-button w3-pink w3-hover-pink w3-right">Search</a> -->
-	<input class="w3-button w3-center w3-blue w3-hover-blue w3-right w3-border-right" type="button" value="Logout" onclick="logoutPro()" />
-	<a href="#" class="w3-bar-item w3-button w3-pink w3-border-right" style="width: 1%;">!</a>
-		<label class="w3-right w3-small" style="color: white; margin:10px 10px 0px 0px;"> <b>${name}</b> 님 환영합니다.</label>
-		
-		
+		<input class="w3-button w3-center w3-blue w3-hover-blue w3-right w3-border-right" type="button" value="Logout" onclick="logoutPro()" />
+		<a href="#" class="w3-bar-item w3-button w3-pink w3-border-right" style="width: 1%;">!</a>
+		<label class="w3-right w3-small" style="color: white; margin:10px 10px 0px 0px;"> <b>${name}</b> 님 환영합니다.</label>	
 	</div>
 <!-- end. 상단바 -->
 
@@ -256,13 +249,23 @@
 			<c:if test="${sessionID ne 'admin'}">
 				<a href="${pageContext.request.contextPath}/story/user_main" class="w3-bar-item w3-button w3-pink w3-border-right" style="width: 13.3%; margin-left: 25%;">Main</a>
 				<a href="${pageContext.request.contextPath}/story/user_timeline" class="w3-bar-item w3-button w3-pink w3-border-right" style="width: 13.3%;">Timeline</a>
-				<a href="<%=request.getContextPath() %>/story/user_gallery" class="w3-bar-item w3-button w3-pink w3-border-right" style="width: 13.3%; margin-right: 25%;">Gallery</a>
+				<a href="${pageContext.request.contextPath}/story/user_gallery" class="w3-bar-item w3-button w3-pink w3-border-right" style="width: 13.3%;">Gallery</a>
+				<form method="post" name="user_main" action="${pageContext.request.contextPath}/story/user_search">	
+					<input class="w3-bar-item w3-button w3-pink w3-border-right w3-right" type="submit" value="Search">
+					<input type="hidden" name="email" value="${sessionID}">
+					<input class="w3-bordered w3-right" type="text" name="search" placeholder="Search" style="margin: 5px 4px 0px 0px;">
+				</form>
 			</c:if>
 			<c:if test="${sessionID eq 'admin'}">
 				<a href="${pageContext.request.contextPath}/story/user_main" class="w3-bar-item w3-button w3-pink w3-border-right" style="width: 10%; margin-left: 25%;">Main</a>
 				<a href="${pageContext.request.contextPath}/story/user_timeline" class="w3-bar-item w3-button w3-pink w3-border-right" style="width: 10%;">Timeline</a>
 				<a href="${pageContext.request.contextPath}/story/user_gallery" class="w3-bar-item w3-button w3-pink w3-border-right" style="width: 10%;">Gallery</a>
-				<a href="${pageContext.request.contextPath}/admin/accountList" class="w3-bar-item w3-button w3-pink w3-border-right" style="width: 10%; margin-right: 25%;">Account List</a>
+				<a href="${pageContext.request.contextPath}/admin/accountList" class="w3-bar-item w3-button w3-pink w3-border-right" style="width: 10%;">Account List</a>
+				<form method="post" name="user_main" action="${pageContext.request.contextPath}/story/user_search">	
+					<input class="w3-bar-item w3-button w3-pink w3-border-right w3-right" type="submit" value="Search">
+					<input type="hidden" name="email" value="${sessionID}">
+					<input class="w3-bordered w3-right" type="text" name="search" placeholder="Search" style="margin: 5px 4px 0px 0px;">
+				</form>
 			</c:if>	
 			<%-- <a href="<%=request.getContextPath() %>/story/user_map" class="w3-bar-item w3-button w3-pink w3-border-right" style="width: 15%;">Map</a>
 			<a href="<%=request.getContextPath() %>/story/user_calender" class="w3-bar-item w3-button w3-pink w3-border-right" style="width: 15%;">Calendar</a> --%>

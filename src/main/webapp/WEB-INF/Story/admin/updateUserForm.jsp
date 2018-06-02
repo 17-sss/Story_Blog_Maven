@@ -5,7 +5,7 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-	<title>Insert title here</title>
+	<title>Admin Page (Modify User) - Story Blog</title>
 	<style type="text/css">
 		.w3-input {
 				padding: 8px;

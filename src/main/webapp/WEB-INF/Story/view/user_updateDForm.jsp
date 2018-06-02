@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>Story Blog - User Write</title>
+<title>Modify a Story! - Story Blog</title>
 <style type="text/css">
 	.w3-input {
 		padding: 8px;

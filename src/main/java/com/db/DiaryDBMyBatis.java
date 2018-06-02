@@ -108,4 +108,18 @@ public class DiaryDBMyBatis extends MybatisConnector {
 		sqlSession.close();
 	}
 	
+	// 일기 검색
+	public List searchDiary(String search, int startRow, int endRow, String email) {
+	    sqlSession= sqlSession();
+        Map map = new HashMap();
+        map.put("startRow", startRow);
+        map.put("endRow", endRow);
+        map.put("search", search);
+        map.put("email", email);
+        List li = sqlSession.selectList(namespace + ".searchDiary",map);
+        sqlSession.close();
+        
+        return li;
+	}
+	
 }

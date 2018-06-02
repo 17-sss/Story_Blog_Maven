@@ -7,7 +7,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 	<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
-	<title>Story Blog - Sign Up</title>
+	<title>Sign Up - Story Blog</title>
 	<style type="text/css">
 		body,h1 {font-family: "consolas", sans-serif}
 		body, html {height: 100%}

@@ -6,7 +6,7 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-	<title>Story Blog - User</title>
+	<title>${diary.subject} - Story Blog</title>
 	<style type="text/css">
 		/* 이미지 반응형으로 처리.. */
 		.autoimg {
