@@ -38,10 +38,14 @@
 		insert into diary(num, email, diaryid, subject, cdate, content, ip, filename0, filesize0, filename1, filesize1, filename2, filesize2, filename3, filesize3, filename4, filesize4) values(#{num},#{email},#{diaryid},#{subject},sysdate,#{content},#{ip},#{filename0},#{filesize0},#{filename1},#{filesize1},#{filename2},#{filesize2},#{filename3},#{filesize3},#{filename4},#{filesize4})
 	</insert>
 	
-	<select id="searchDiary" parameterType="hashmap">
+	<select id="searchDiary" parameterType="hashmap" resultType="Diary">
 		select * from (select rownum rnum, b.* from (select num, email, diaryid, subject, cdate, content, ip, filename0, filename1, filename2,
 			filename3, filename4 from diary where email = #{email} and subject like #{search}
-			 or content like #{search} order by cdate desc) b) where rnum between #{startRow} and #{endRow}
+			 order by cdate desc) b) where rnum between #{startRow} and #{endRow}
+	</select>
+	
+	<select id="getSearchDiaryCount" resultType="int" parameterType="hashmap">
+		SELECT nvl(count(*),0) FROM diary WHERE email = #{email} and subject like #{search}
 	</select>
 	
 

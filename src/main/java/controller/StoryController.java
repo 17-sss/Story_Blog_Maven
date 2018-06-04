@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -677,16 +678,50 @@ public class StoryController {
 
 	// end. 유저 - 마이페이지 ============================= 
 	
-	@RequestMapping(value = "user_search")
-	public ModelAndView user_search(String email, String search) throws Throwable {
-		ModelAndView mv = new ModelAndView();
-		System.out.println("테스트중\n이메일: "+email+"\t검색어: "+search);
+	@RequestMapping("/user_search")
+	public ModelAndView user_search(String email, String search, ModelAndView mv, String pageNum) throws Throwable {
+		int pageSize = 10;
+		if (pageNum == null || pageNum == "") {
+			pageNum = "1";
+		}
+		int currentPage = Integer.parseInt(pageNum);
+		int startRow = (currentPage - 1) * pageSize + 1;
+		int endRow = currentPage * pageSize;
+		int count = 0;
+		int number = 0;
+		List diarySearch = null;
+		
+		count = dbPro.getSearchDiaryCount(email, "%"+search+"%");
+		if (count > 0) {
+			diarySearch = dbPro.searchDiary(email, "%"+search+"%", startRow, endRow);
+		}
+		number = count - (currentPage - 1) * pageSize;
+
+		int bottomLine = 3;
+		int pageCount = count / pageSize + (count % pageSize == 0 ? 0 : 1);
+		int startPage = 1 + (currentPage - 1) / bottomLine * bottomLine;
+		int endPage = startPage + bottomLine - 1;
+
+		if (endPage > pageCount)
+			endPage = pageCount;
+		
+		mv.addObject("email", email);
 		mv.addObject("search", search);
+		mv.addObject("count", count);
+		mv.addObject("diarySearch", diarySearch);
+		mv.addObject("currentPage", currentPage);
+		mv.addObject("startPage", startPage);
+		mv.addObject("bottomLine", bottomLine);
+		mv.addObject("pageCount", pageCount);
+		mv.addObject("endPage", endPage);
+		mv.addObject("number", number);
+		
+		System.out.println("테스트중\n이메일: "+email+"\t검색어: "+search);
+		
 		mv.setViewName("view/user_search");
+		
 		return mv;
 	}
-
-	
 
 // {} class
 }

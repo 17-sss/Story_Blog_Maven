@@ -250,7 +250,7 @@
 				<a href="${pageContext.request.contextPath}/story/user_main" class="w3-bar-item w3-button w3-pink w3-border-right" style="width: 13.3%; margin-left: 25%;">Main</a>
 				<a href="${pageContext.request.contextPath}/story/user_timeline" class="w3-bar-item w3-button w3-pink w3-border-right" style="width: 13.3%;">Timeline</a>
 				<a href="${pageContext.request.contextPath}/story/user_gallery" class="w3-bar-item w3-button w3-pink w3-border-right" style="width: 13.3%;">Gallery</a>
-				<form method="post" name="user_main" action="${pageContext.request.contextPath}/story/user_search">	
+				<form method="post" name="SearchForm" action="${pageContext.request.contextPath}/story/user_search">	
 					<input class="w3-bar-item w3-button w3-pink w3-border-right w3-right" type="submit" value="Search">
 					<input type="hidden" name="email" value="${sessionID}">
 					<input class="w3-bordered w3-right" type="text" name="search" placeholder="Search" style="margin: 5px 4px 0px 0px;">
@@ -261,7 +261,7 @@
 				<a href="${pageContext.request.contextPath}/story/user_timeline" class="w3-bar-item w3-button w3-pink w3-border-right" style="width: 10%;">Timeline</a>
 				<a href="${pageContext.request.contextPath}/story/user_gallery" class="w3-bar-item w3-button w3-pink w3-border-right" style="width: 10%;">Gallery</a>
 				<a href="${pageContext.request.contextPath}/admin/accountList" class="w3-bar-item w3-button w3-pink w3-border-right" style="width: 10%;">Account List</a>
-				<form method="post" name="user_main" action="${pageContext.request.contextPath}/story/user_search">	
+				<form method="post" name="SearchForm" action="${pageContext.request.contextPath}/story/user_search">	
 					<input class="w3-bar-item w3-button w3-pink w3-border-right w3-right" type="submit" value="Search">
 					<input type="hidden" name="email" value="${sessionID}">
 					<input class="w3-bordered w3-right" type="text" name="search" placeholder="Search" style="margin: 5px 4px 0px 0px;">
